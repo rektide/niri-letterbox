@@ -1,0 +1,39 @@
+{
+	"name": "niri-letterbox",
+	"version": "1.0.0",
+	"description": "CLI tool for adjusting letterboxing on niri display outputs",
+	"main": "niri-letterbox.ts",
+	"bin": {
+		"niri-letterbox": "./niri-letterbox.ts"
+	},
+	"scripts": {
+		"typecheck": "tsgo",
+		"lint": "oxlint",
+		"format": "oxfmt .",
+		"format:check": "oxfmt --check .",
+		"test": "vitest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rektide/niri-letterbox.git"
+	},
+	"keywords": [],
+	"author": "rektide de la faye",
+	"license": "MIT",
+	"type": "module",
+	"bugs": {
+		"url": "https://github.com/rektide/niri-letterbox/issues"
+	},
+	"homepage": "https://github.com/rektide/niri-letterbox#readme",
+	"module": "niri-letterbox.js",
+	"devDependencies": {
+		"@types/node": "^25.0.3",
+		"@typescript/native-preview": "7.0.0-dev.20260103.1",
+		"gunshi": "^0.27.5",
+		"oxfmt": "^0.21.0",
+		"oxlint": "^1.36.0",
+		"tsdown": "0.19.0-beta.2",
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.16"
+	}
+}
