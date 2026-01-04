@@ -1,12 +1,23 @@
 #!/usr/bin/env node
 import { cli } from 'gunshi'
+import { letterbox } from './commands/letterbox.ts'
 import { showConfig } from './commands/show-config.ts'
 
 const command = {
   name: 'niri-letterbox',
   description: 'CLI tool for adjusting letterboxing on niri display outputs',
-  run: async (_ctx: any) => {
-    return 'niri-letterbox - CLI tool for adjusting letterboxing on niri display outputs\n\nRun "niri-letterbox show-config" to view current niri configuration.'
+  args: {
+    size: {
+      type: 'string',
+      short: 's',
+      description: 'Letterbox strut size as percentage (0-100)'
+    }
+  },
+  run: async (ctx: any) => {
+    if (ctx.values.size) {
+      return await letterbox(ctx)
+    }
+    return 'niri-letterbox - CLI tool for adjusting letterboxing on niri display outputs\n\nUsage: niri-letterbox --size <percentage>\n\nRun "niri-letterbox show-config" to view current niri configuration.'
   }
 }
 
