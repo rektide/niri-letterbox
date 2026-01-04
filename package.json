@@ -37,6 +37,7 @@
 		"vitest": "^4.0.16"
 	},
 	"dependencies": {
-		"@bgotink/kdl": "^0.4.0"
+		"@bgotink/kdl": "^0.4.0",
+		"xdg-basedir": "^5.1.0"
 	}
 }
