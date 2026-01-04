@@ -2,6 +2,7 @@
 import { cli } from 'gunshi'
 import { letterbox } from './commands/letterbox.ts'
 import { showConfig } from './commands/show-config.ts'
+import { enableDisableLetterbox } from './commands/enable-disable-letterbox.ts'
 
 const command = {
   name: 'niri-letterbox',
@@ -17,7 +18,7 @@ const command = {
     if (ctx.values.size) {
       return await letterbox(ctx)
     }
-    return 'niri-letterbox - CLI tool for adjusting letterboxing on niri display outputs\n\nUsage: niri-letterbox --size <percentage>\n\nRun "niri-letterbox show-config" to view current niri configuration.'
+    return 'niri-letterbox - CLI tool for adjusting letterboxing on niri display outputs\n\nUsage: niri-letterbox --size <percentage>\n\nCommands:\n  --size <percent>   Set letterbox strut size\n  --enable           Enable letterboxing in niri config\n  --disable          Disable letterboxing in niri config\n\nRun "niri-letterbox show-config" to view current niri configuration.'
   }
 }
 
@@ -30,6 +31,20 @@ cli(process.argv.slice(2), command, {
       name: 'show-config',
       description: 'Read and display current niri configuration',
       run: showConfig
+    },
+    'enable': {
+      name: 'enable',
+      description: 'Enable letterboxing in niri config',
+      run: async (_ctx: any) => {
+        await enableDisableLetterbox(true)
+      }
+    },
+    'disable': {
+      name: 'disable',
+      description: 'Disable letterboxing in niri config',
+      run: async (_ctx: any) => {
+        await enableDisableLetterbox(false)
+      }
     }
   }
 }).catch(console.error)
